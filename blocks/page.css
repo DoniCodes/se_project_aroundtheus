@@ -1,0 +1,8 @@
+.page {
+  background-color: black;
+  color: white;
+}
+
+.page__content {
+  margin: 0 200px 0;
+}

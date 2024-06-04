@@ -1,0 +1,16 @@
+.header {
+  margin: 45px 0 0;
+  max-width: 880px;
+  max-height: 74px;
+}
+
+.header__logo {
+  max-width: 173px;
+  max-height: 33px;
+  margin-bottom: 41px;
+}
+
+.header__line-border {
+  max-width: 880px;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+}
