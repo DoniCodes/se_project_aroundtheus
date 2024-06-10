@@ -4,7 +4,15 @@
 
 * Intro  
 * Figma  
-* Images  
+* Images
+* Responsive Web Design 
+
+##Technologies
+- Figma
+- HTML5
+- CSS3
+- VS Code
+- Google Chrome
   
 **Intro**
   
