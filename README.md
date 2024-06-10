@@ -1,10 +1,22 @@
 # Project 3: Around The U.S.
 
+## Technologies
+- Figma
+- HTML5
+- CSS3
+- VS Code
+- Google Chrome
+
+## Github Page URL
+- https://donicodes.github.io/se_project_aroundtheus/
+
+
 ### Overview  
 
 * Intro  
 * Figma  
-* Images  
+* Images
+* Responsive Web Design 
   
 **Intro**
   
