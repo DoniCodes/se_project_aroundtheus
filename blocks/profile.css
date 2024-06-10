@@ -24,7 +24,7 @@
 }
 
 .profile__title {
-  font-family: "Inter", system-ui;
+  font-family: "Inter", Arial, sans-serif;
   font-size: 41px;
   font-weight: 500;
   line-height: 1.17;
@@ -33,7 +33,7 @@
 }
 
 .profile__description {
-  font-family: "Inter", system-ui;
+  font-family: "Inter", Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 1.2;
@@ -73,12 +73,11 @@
   .profile__info {
     grid-template-columns: minmax(auto, 278px);
   }
+
   .profile__title {
     font-size: 31px;
   }
-  /* .profile__description {
-    font-size: 16px;
-  } */
+
   .profile__add-button {
     width: 100px;
   }
@@ -102,7 +101,7 @@
 
   .profile__description {
     font-size: 14px;
-    line-height: 1.21;
+    line-height: 1.2;
   }
 }
 

@@ -1,6 +1,6 @@
 .cards {
   color: #000;
-  font-family: "Inter", system-ui;
+  font-family: "Inter", Arial, sans-serif;
 }
 
 .cards__list {
@@ -15,7 +15,6 @@
 
 @media screen and (max-width: 320px) {
   .cards__list {
-    gap: 20px 0;
-    margin: 36px auto;
+    margin: 36px auto 0;
   }
 }
