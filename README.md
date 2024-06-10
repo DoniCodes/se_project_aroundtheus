@@ -7,12 +7,15 @@
 * Images
 * Responsive Web Design 
 
-##Technologies
+## Technologies
 - Figma
 - HTML5
 - CSS3
 - VS Code
 - Google Chrome
+
+## Github Page URL
+- https://donicodes.github.io/se_project_aroundtheus/
   
 **Intro**
   
