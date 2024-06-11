@@ -13,7 +13,7 @@
   width: 100%;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 520px) {
   .cards__list {
     margin: 36px auto 0;
   }
