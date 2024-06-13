@@ -1,8 +1,7 @@
 .profile {
   display: flex;
   align-items: center;
-  margin: 0 auto;
-  padding: 40px 20px 0;
+  padding: 40px 0 0;
 }
 
 .profile__image {
@@ -11,7 +10,7 @@
   border-radius: 50%;
   object-fit: cover;
   background-position: center;
-  margin-right: 30px;
+  margin: 0 auto;
 }
 
 .profile__info {
@@ -49,10 +48,11 @@
   margin: auto;
   border: 1px solid #fff;
   padding: 0;
+  cursor: pointer;
 }
 
 .profile__edit-button:hover {
-  background: transparent url(../images/edit-icon-hover.svg) center no-repeat;
+  opacity: 0.6;
 }
 
 .profile__add-button {
@@ -61,12 +61,12 @@
   height: 50px;
   border: 2px solid #fff;
   border-radius: 2px;
-  margin: 0 0 0 auto;
-  padding: 0;
+  margin: 0 auto;
+  cursor: pointer;
 }
 
 .profile__add-button:hover {
-  background: transparent url(../images/add-icon-hover.svg) center no-repeat;
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 768px) {
