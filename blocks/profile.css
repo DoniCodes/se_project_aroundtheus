@@ -37,6 +37,7 @@
 }
 
 .profile__description {
+  max-width: 373px;
   font-family: "Inter", Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
@@ -65,7 +66,7 @@
 
 .profile__add-button {
   background: transparent url(../images/add-icon.svg) center no-repeat;
-  width: 140px;
+  width: 150px;
   height: 50px;
   border: 2px solid #fff;
   border-radius: 2px;
@@ -86,10 +87,6 @@
   .profile__title {
     font-size: 31px;
   }
-
-  .profile__add-button {
-    width: 100px;
-  }
 }
 
 @media screen and (max-width: 630px) {
@@ -104,6 +101,7 @@
   }
 
   .profile__title {
+    max-width: 222px;
     font-size: 22px;
     line-height: 1.2;
   }
