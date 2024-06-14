@@ -12,7 +12,7 @@
   border-radius: 50%;
   object-fit: cover;
   background-position: center;
-  margin: 0 auto;
+  margin: 0 auto 0 0;
 }
 
 .profile__info {
@@ -70,7 +70,7 @@
   height: 50px;
   border: 2px solid #fff;
   border-radius: 2px;
-  margin: 0 auto;
+  margin: 0 0 0 auto;
   padding: 0;
   cursor: pointer;
 }
@@ -82,6 +82,10 @@
 @media screen and (max-width: 768px) {
   .profile__info {
     grid-template-columns: minmax(auto, 278px);
+  }
+
+  .profile__add-button {
+    width: 125px;
   }
 
   .profile__title {
