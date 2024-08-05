@@ -33,6 +33,10 @@ const initialCards = [
 /* ----------------------------------------------------------------------------- */
 /*                               Elements                                        */
 /* ----------------------------------------------------------------------------- */
+const cardListEl = document.querySelector(".cards__list");
+const cardTemplate =
+  document.querySelector("#card-template").content.firstElementChild;
+
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileModalCloseButton = profileEditModal.querySelector(".modal__close");
@@ -43,15 +47,13 @@ const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
 const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
-const cardListEl = document.querySelector(".cards__list");
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
 
 const addCardButton = document.querySelector("#card-add-button");
 const addCardModal = document.querySelector("#profile-addcard-modal");
 const addCardCloseModalButton = addCardModal.querySelector(".modal__close");
-const cardTitle = document.querySelector(".card__title");
-const addCardForm = document.querySelector("#card-add-form");
+const addCardForm = addCardModal.querySelector("#card-add-form");
+const addCardTitleInput = addCardForm.querySelector("#card-title-input");
+const addCardUrlInput = addCardForm.querySelector("#card-img-link");
 
 /* ----------------------------------------------------------------------------- */
 /*                              Functions                                        */
@@ -62,6 +64,11 @@ function closeModal(modal) {
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+}
+
+function renderCard(cardData, wrapper) {
+  const newCardElement = getCardElement(cardData);
+  wrapper.prepend(newCardElement);
 }
 
 function getCardElement(cardData) {
@@ -92,7 +99,9 @@ function handleProfileSubmit(e) {
 
 function handleAddCardSubmit(e) {
   e.preventDefault();
-  cardTitle.textContent = addCardTitleInput.value;
+  const name = addCardTitleInput.value;
+  const link = addCardUrlInput.value;
+  renderCard({ name, link }, cardListEl);
   closeModal(addCardModal);
 }
 
@@ -117,7 +126,4 @@ addCardCloseModalButton.addEventListener("click", () =>
 );
 addCardForm.addEventListener("submit", handleAddCardSubmit);
 
-initialCards.forEach((cardData) => {
-  const cardElement = getCardElement(cardData);
-  cardListEl.prepend(cardElement);
-});
+initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
