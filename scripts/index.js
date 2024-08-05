@@ -33,12 +33,14 @@ const initialCards = [
 /* ----------------------------------------------------------------------------- */
 /*                               Elements                                        */
 /* ----------------------------------------------------------------------------- */
-const cardListEl = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
-const profileEditButton = document.querySelector("#profile-edit-button");
+const cardListEl = document.querySelector(".cards__list");
+
 const profileEditModal = document.querySelector("#profile-edit-modal");
+const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
+const profileEditButton = document.querySelector("#profile-edit-button");
 const profileModalCloseButton = profileEditModal.querySelector(".modal__close");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
@@ -46,12 +48,11 @@ const profileTitleInput = document.querySelector("#profile-title-input");
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
-const profileEditForm = profileEditModal.querySelector("#profile-edit-form");
 
-const addCardButton = document.querySelector("#card-add-button");
 const addCardModal = document.querySelector("#profile-addcard-modal");
-const addCardCloseModalButton = addCardModal.querySelector(".modal__close");
 const addCardForm = addCardModal.querySelector("#card-add-form");
+const addCardButton = document.querySelector("#card-add-button");
+const addCardCloseModalButton = addCardModal.querySelector(".modal__close");
 const addCardTitleInput = addCardForm.querySelector("#card-title-input");
 const addCardUrlInput = addCardForm.querySelector("#card-img-link");
 
@@ -77,6 +78,11 @@ function getCardElement(cardData) {
   // access the card title and image and store them in variables
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
+  const likeButton = cardElement.querySelector(".card__like-button");
+
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like-button_active");
+  });
   // set the path to the image to the link field of the object
   cardImageEl.setAttribute("src", cardData.link);
   // set the image alt text to the name field of the object
