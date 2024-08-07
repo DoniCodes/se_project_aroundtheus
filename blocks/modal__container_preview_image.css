@@ -1,4 +1,4 @@
-.modal__container_preview_image {
+.modal__container_preview {
   padding: 0;
   max-height: 75vh;
   max-width: 75vw;
@@ -6,4 +6,22 @@
   width: auto;
   height: auto;
   background: none;
+}
+
+.modal__container_preview_image {
+  object-fit: cover;
+  width: 100%;
+  max-width: 75vw;
+  max-height: 75vh;
+}
+
+.modal__container_preview_caption {
+  position: absolute;
+  top: calc(100% + 10px);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+  max-width: 291px;
+  height: 12px;
+  line-height: 1.21;
 }
