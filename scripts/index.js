@@ -58,7 +58,7 @@ const addCardUrlInput = addCardForm.querySelector("#card-img-link");
 
 /* ----------------------------------------------------------------------------- */
 /*                              Functions                                        */
-/* ----------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------- */
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
 }
@@ -78,17 +78,28 @@ function getCardElement(cardData) {
   // access the card title and image and store them in variables
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
-
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
   // set the path to the image to the link field of the object
   cardImageEl.setAttribute("src", cardData.link);
   // set the image alt text to the name field of the object
   cardTitleEl.setAttribute("alt", cardData.name);
   // set the card title to the name field of the object, too
   cardTitleEl.textContent = cardData.name;
+
+  //handle like and delete button
+  const likeButton = cardElement.querySelector(".card__like-button");
+  const deleteButton = cardElement.querySelector(".card__delete-button");
+
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like-button_active");
+  });
+
+  deleteButton.addEventListener("click", () => {
+    cardElement.remove();
+  });
+
+  //handle preview image
+  cardImageEl.addEventListener("click", () => showPreview(cardData));
+
   // return the ready HTML element with the filled-in data
   return cardElement;
 }
