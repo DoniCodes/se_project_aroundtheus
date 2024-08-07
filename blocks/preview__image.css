@@ -1,0 +1,6 @@
+.preview__image {
+  object-fit: cover;
+  width: 100%;
+  max-width: 75vw;
+  max-height: 75vh;
+}

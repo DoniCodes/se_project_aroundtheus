@@ -1,0 +1,9 @@
+.modal__container_preview_image {
+  padding: 0;
+  max-height: 75vh;
+  max-width: 75vw;
+  display: flex;
+  width: auto;
+  height: auto;
+  background: none;
+}

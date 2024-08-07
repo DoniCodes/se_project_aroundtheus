@@ -1,0 +1,10 @@
+.preview__caption {
+  position: absolute;
+  top: calc(100% + 10px);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+  max-width: 291px;
+  height: 12px;
+  line-height: 1.21;
+}

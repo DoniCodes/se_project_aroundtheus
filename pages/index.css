@@ -8,3 +8,6 @@
 @import url(../blocks/card.css);
 @import url(../blocks/footer.css);
 @import url(../blocks/modal.css);
+@import url(../blocks/modal__container_preview_image.css);
+@import url(../blocks/preview__image.css);
+@import url(../blocks/preview__caption.css);
