@@ -58,12 +58,8 @@ const addCardUrlInput = addCardForm.querySelector("#card-img-link");
 
 const previewModal = document.querySelector("#image-preview-modal");
 const previewModalCloseButton = previewModal.querySelector(".modal__close");
-const previewModalImg = document.querySelector(
-  ".modal__container_preview_image"
-);
-const previewModalCaption = document.querySelector(
-  ".modal__container_preview_caption"
-);
+const previewModalImg = document.querySelector(".modal__form_image");
+const previewModalCaption = document.querySelector(".modal__form_caption");
 
 /* ----------------------------------------------------------------------------- */
 /*                              Functions                                        */
