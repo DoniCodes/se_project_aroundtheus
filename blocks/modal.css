@@ -63,6 +63,7 @@
   line-height: 1.2;
   text-align: left;
 }
+
 .modal__form {
   width: 100%;
   display: flex;
@@ -103,21 +104,14 @@
   opacity: 0.8;
 }
 
-.modal__popup {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.modal__popup-image {
+.modal__image {
   object-fit: cover;
   width: 100%;
   max-width: 75vw;
   max-height: 75vh;
 }
 
-.modal__popup-caption {
+.modal__caption {
   position: absolute;
   top: calc(100% + 10px);
   color: #fff;
