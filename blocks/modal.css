@@ -70,24 +70,6 @@
   justify-content: center;
 }
 
-.modal__form-image {
-  object-fit: cover;
-  width: 100%;
-  max-width: 75vw;
-  max-height: 75vh;
-}
-
-.modal__form-caption {
-  position: absolute;
-  top: calc(100% + 10px);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 400;
-  max-width: 291px;
-  height: 12px;
-  line-height: 1.21;
-}
-
 .modal__input {
   max-width: 358px;
   width: 100%;
@@ -119,6 +101,31 @@
 
 .modal__save:hover {
   opacity: 0.8;
+}
+
+.modal__popup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal__popup-image {
+  object-fit: cover;
+  width: 100%;
+  max-width: 75vw;
+  max-height: 75vh;
+}
+
+.modal__popup-caption {
+  position: absolute;
+  top: calc(100% + 10px);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+  max-width: 291px;
+  height: 12px;
+  line-height: 1.21;
 }
 
 @media screen and (max-width: 540px) {
