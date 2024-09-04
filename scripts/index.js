@@ -66,11 +66,33 @@ const previewModalCaption = document.querySelector(".modal__caption");
 /* ---------------------------------------------------------------------------- */
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keyup", handleEscUp);
+  document.removeEventListener("click", handleOverlayClick);
 }
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keyup", handleEscUp);
+  document.addEventListener("click", handleOverlayClick);
 }
+
+const isEscEvent = (e, action) => {
+  const activeModal = document.querySelector(".modal_opened");
+  if (e.key === "Escape") {
+    action(activeModal);
+  }
+};
+
+const handleEscUp = (e) => {
+  e.preventDefault();
+  isEscEvent(e, closeModal);
+};
+
+const handleOverlayClick = (e) => {
+  if (e.target.classList.contains("modal_opened")) {
+    closeModal(e.target);
+  }
+};
 
 function renderCard(cardData, wrapper) {
   const newCardElement = getCardElement(cardData);
