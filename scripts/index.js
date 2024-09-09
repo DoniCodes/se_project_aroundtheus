@@ -67,13 +67,13 @@ const previewModalCaption = document.querySelector(".modal__caption");
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keyup", handleEscUp);
-  document.removeEventListener("click", handleOverlayClick);
+  document.removeEventListener("mouseup", handleOverlayClick);
 }
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keyup", handleEscUp);
-  document.addEventListener("click", handleOverlayClick);
+  document.addEventListener("mouseup", handleOverlayClick);
 }
 
 const isEscEvent = (e, action) => {
