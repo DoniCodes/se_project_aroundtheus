@@ -49,12 +49,12 @@ const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
 
-const addCardModal = document.querySelector("#profile-addcard-modal");
+const addCardModal = document.querySelector("#profile-add-card-modal");
 const addCardForm = addCardModal.querySelector("#card-add-form");
 const addCardButton = document.querySelector("#card-add-button");
 const addCardCloseModalButton = addCardModal.querySelector(".modal__close");
 const addCardTitleInput = addCardForm.querySelector("#card-title-input");
-const addCardUrlInput = addCardForm.querySelector("#card-img-link");
+const addCardUrlInput = addCardForm.querySelector("#card-url-input");
 
 const previewModal = document.querySelector("#image-preview-modal");
 const previewModalCloseButton = previewModal.querySelector(".modal__close");

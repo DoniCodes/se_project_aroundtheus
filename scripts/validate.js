@@ -69,13 +69,12 @@ const resetValidation = (formElement, inputList, options) => {
   });
 };
 
-const setEventListeners = (
-  formElement,
-  { inputSelector, submitButtonSelector, ...options }
-) => {
+const setEventListeners = (formElement, options) => {
   // get the form elements
-  const inputList = [...formElement.querySelectorAll(inputSelector)];
-  const buttonElement = formElement.querySelector(submitButtonSelector);
+  const inputList = Array.from(
+    formElement.querySelectorAll(options.inputSelector)
+  );
+  const buttonElement = formElement.querySelector(options.submitButtonSelector);
 
   // setup listenrs for the form elements
   inputList.forEach((inputElement) => {
