@@ -58,7 +58,6 @@ const toggleButtonState = (inputList, buttonElement, options) => {
   if (hasInvalidInput(inputList)) {
     disableButton(buttonElement, options);
   } else {
-    buttonElement.disabled = false;
     enableButton(buttonElement, options);
   }
 };
@@ -80,20 +79,6 @@ const setEventListeners = (formElement, options) => {
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
       // check if the input is valid
-      checkInputValidity(formElement, inputElement, options);
-      toggleButtonState(inputList, buttonElement, options);
-    });
-  });
-};
-
-const setEventListners = (formElement, options) => {
-  const inputList = Array.from(
-    formElement.querySelectorAll(options.inputSelector)
-  );
-  const buttonElement = formElement.querySelector(options.submitButtonSelector);
-
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener("input", () => {
       checkInputValidity(formElement, inputElement, options);
       toggleButtonState(inputList, buttonElement, options);
     });
