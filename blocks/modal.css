@@ -186,17 +186,22 @@
 
   .modal__input {
     max-width: 238px;
-    margin: 0 auto 30px;
+    margin: 0 auto;
   }
 
   .modal__input_last {
     margin: 0 auto;
   }
 
-  .modal__save {
+  .modal__save-btn {
     max-width: 238px;
     height: 46px;
     margin: 45px auto 0;
     font-size: 14px;
+  }
+
+  .modal__error {
+    max-width: 238px;
+    margin-left: 23px;
   }
 }
