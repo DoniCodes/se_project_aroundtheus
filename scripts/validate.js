@@ -1,4 +1,4 @@
-const config = {
+/* const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__save-btn",
@@ -62,12 +62,6 @@ const toggleButtonState = (inputList, buttonElement, options) => {
   }
 };
 
-const resetValidation = (formElement, inputList, options) => {
-  inputList.forEach((inputElement) => {
-    hideInputError(formElement, inputElement, options);
-  });
-};
-
 const setEventListeners = (formElement, options) => {
   // get the form elements
   const inputList = Array.from(
@@ -100,4 +94,4 @@ const enableValidation = ({ formSelector, ...options }) => {
   });
 };
 
-enableValidation(config);
+enableValidation(config); */
