@@ -5,6 +5,7 @@
 - Figma
 - HTML5
 - CSS3
+- Javascript
 - VS Code
 - Google Chrome
 
