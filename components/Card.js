@@ -1,7 +1,3 @@
-const previewModal = document.querySelector("#image-preview-modal");
-const previewModalImg = document.querySelector(".modal__image");
-const previewModalCaption = document.querySelector(".modal__caption");
-
 class Card {
   constructor(data, cardSelector, handleImageClick) {
     this._name = data.name;
@@ -52,7 +48,6 @@ class Card {
 
   _handleDeleteCard(evt) {
     evt.target.closest(".card").remove();
-    this._cardElement = null;
   }
 }
 

@@ -29,7 +29,7 @@ class FormValidator {
 
   _checkInputValidity = (inputElement) => {
     if (!inputElement.validity.valid) {
-      this._showInputError(inputElement);
+      return this._showInputError(inputElement);
     } else {
       this._hideInputError(inputElement);
     }
@@ -41,36 +41,37 @@ class FormValidator {
     });
   };
 
-  _disableButton = (buttonElement) => {
-    buttonElement.disabled = true;
-    buttonElement.classList.add(this._inactiveButtonClass);
+  _disableButton = () => {
+    this._buttonElement.classList.add(this._inactiveButtonClass);
+    this._buttonElement.disabled = true;
   };
 
-  _enableButton = (buttonElement) => {
-    buttonElement.disabled = false;
-    buttonElement.classList.remove(this._inactiveButtonClass);
+  _enableButton = () => {
+    this._buttonElement.classList.remove(this._inactiveButtonClass);
+    this._buttonElement.disabled = false;
   };
 
-  _toggleButtonState = (inputList, buttonElement) => {
-    if (this._hasInvalidInput(inputList)) {
-      this._disableButton(buttonElement);
+  toggleButtonState = () => {
+    if (this._hasInvalidInput(this._inputList)) {
+      this._disableButton();
+      return;
     } else {
-      this._enableButton(buttonElement);
+      this._enableButton();
     }
   };
 
   _setEventListeners = () => {
-    const inputList = Array.from(
+    this._inputList = Array.from(
       this._formElement.querySelectorAll(this._inputSelector)
     );
-    const buttonElement = this._formElement.querySelector(
+    this._buttonElement = this._formElement.querySelector(
       this._submitButtonSelector
     );
 
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState(inputList, buttonElement);
+        this.toggleButtonState();
       });
     });
   };
@@ -85,3 +86,4 @@ class FormValidator {
 }
 
 export default FormValidator;
+export * from "../components/FormValidator.js";
