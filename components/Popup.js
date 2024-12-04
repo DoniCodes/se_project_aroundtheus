@@ -1,6 +1,7 @@
 class Popup {
-  constructor(popupselector) {
-    this._selector = document.querySelector(`#${popupselector}`);
+  constructor({ popupSelector }) {
+    this._selector = document.querySelector(`.${popupSelector}`);
+    this._handleEscClose = this._handleEscClose.bind(this);
   }
 
   open() {
@@ -15,17 +16,19 @@ class Popup {
 
   _handleEscClose(e) {
     e.preventDefault();
-    if (e.key === "Escape") {
+    if (e.key === "Escape" || e.key === "Esc") {
       this.close();
     }
   }
 
-  _setEventListeners() {
+  setEventListeners() {
+    this._selector
+      .querySelector(".modal__close")
+      .addEventListener("click", () => {
+        this.close();
+      });
     this._selector.addEventListener("mousedown", (e) => {
-      if (
-        e.target.classList.contains("modal") ||
-        e.target.classlist.contains("modal__close")
-      ) {
+      if (e.target.classList.contains(".modal")) {
         this.close();
       }
     });
