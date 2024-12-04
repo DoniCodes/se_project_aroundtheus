@@ -20,17 +20,17 @@ const cardSection = new Section(
     renderer: (cardData) => {
       const cardElement = new Card(
         {
-          cardData,
+          data: cardData,
           handleImageClick: () => {
             popupWithImage.open(cardData);
           },
         },
-        selectors.cardList
+        selectors.cardTemplate
       ); // Add the card to the DOM
       cardSection.addItem(cardElement.generateCard());
     },
   },
-  selectors.cardTemplate
+  selectors.cardList
 );
 popupWithImage.setEventListeners();
 cardSection.renderItems(initialCards);

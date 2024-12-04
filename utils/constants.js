@@ -31,9 +31,9 @@ export const initialCards = [
 ];
 
 export const selectors = {
-  cardList: "cards__list",
+  cardList: ".cards__list",
   cardTemplate: "#card-template",
-  previewPopup: "#image-preview-modal",
+  previewPopup: "image-preview-modal",
 };
 
 export const formValidationConfig = {
