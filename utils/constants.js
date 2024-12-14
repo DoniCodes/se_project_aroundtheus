@@ -34,6 +34,10 @@ export const selectors = {
   cardList: ".cards__list",
   cardTemplate: "#card-template",
   previewPopup: "image-preview-modal",
+  addCardForm: "new-card-form",
+  profileEditForm: "profile-edit-form",
+  userName: "profile__title",
+  userDescription: "profile__description",
 };
 
 export const formValidationConfig = {
