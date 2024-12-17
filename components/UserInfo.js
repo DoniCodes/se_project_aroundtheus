@@ -1,13 +1,15 @@
 class UserInfo {
-  constructor({ userName, userDescription }) {
-    this._userName = document.querySelector(`.${userName}`);
-    this._userDescription = document.querySelector(`.${userDescription}`);
+  constructor({ userNameSelector, userDescriptionSelector }) {
+    this._userName = document.querySelector(userNameSelector);
+    this._userDescription = document.querySelector(userDescriptionSelector);
   }
 
   getUserInfo() {
     return {
-      name: this._userName.textContent,
-      description: this._userDescription.textContent,
+      name: this._userName ? this._userName.textContent : "",
+      description: this._userDescription
+        ? this._userDescription.textContent
+        : "",
     };
   }
 

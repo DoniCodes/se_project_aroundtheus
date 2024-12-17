@@ -33,12 +33,21 @@ export const initialCards = [
 export const selectors = {
   cardList: ".cards__list",
   cardTemplate: "#card-template",
-  previewPopup: "image-preview-modal",
-  addCardForm: "new-card-form",
-  profileEditForm: "profile-edit-form",
-  userName: "profile__title",
-  userDescription: "profile__description",
+  previewPopup: "#image-preview-modal",
+  addCardForm: "#new-card-form",
+  profileEditForm: "#profile-edit-form",
+  newCardModal: "#profile-add-card-modal",
+  editProfileModal: "#profile-edit-modal",
 };
+
+export const profileTitleInput = document.querySelector("#profile-title-input");
+export const profileDescriptionInput = document.querySelector(
+  "#profile-description-input"
+);
+export const editProfilebtn = document.querySelector("#profile-edit-button");
+export const addCardbtn = document.querySelector("#card-add-button");
+export const newCardForm = document.forms["new-card-form"];
+export const editProfileForm = document.forms["profile-edit-form"];
 
 export const formValidationConfig = {
   inputSelector: ".modal__input",
