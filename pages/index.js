@@ -1,6 +1,12 @@
 import {
   initialCards,
   selectors,
+  editProfilebtn,
+  addCardbtn,
+  newCardForm,
+  editProfileForm,
+  profileTitleInput,
+  profileDescriptionInput,
   formValidationConfig,
 } from "../utils/constants.js";
 import FormValidator from "../components/FormValidator.js";
@@ -11,8 +17,8 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 
 const userInfo = new UserInfo({
-  userName: selectors.profileTitle,
-  userDescription: selectors.profileDescription,
+  userName: ".profile__title",
+  userDescription: ".profile__description",
 });
 
 const popupWithImage = new PopupWithImage({
@@ -20,18 +26,21 @@ const popupWithImage = new PopupWithImage({
 });
 
 const userInfoPopup = new PopupWithForm({
-  popupSelector: selectors.profileEditForm,
+  popupSelector: selectors.editProfileModal,
   handleFormSubmit: (data) => {
     userInfo.setUserInfo({
-      name: data.profileTitle,
-      description: data.profileDescription,
+      name: data.name,
+      description: data.description,
     });
+    editProfileForm.reset();
     userInfoPopup.close();
   },
 });
 
+newCardForm.reset();
+
 const newCardPopUp = new PopupWithForm({
-  popupSelector: selectors.addCardForm,
+  popupSelector: selectors.newCardModal,
   handleFormSubmit: (cardData) => {
     const card = new Card(
       {
@@ -43,6 +52,8 @@ const newCardPopUp = new PopupWithForm({
       selectors.cardTemplate
     );
     cardSection.addItem(card.generateCard());
+    newCardPopUp.close();
+    addFormValidator.disableButton();
   },
 });
 
@@ -68,16 +79,22 @@ newCardPopUp.setEventListeners();
 popupWithImage.setEventListeners();
 cardSection.renderItems(initialCards);
 
+addCardbtn.addEventListener("click", () => newCardPopUp.open());
+
+editProfilebtn.addEventListener("click", () => {
+  const currentUserInfo = userInfo.getUserInfo();
+  profileTitleInput.value = currentUserInfo.name;
+  profileDescriptionInput.value = currentUserInfo.description;
+  userInfoPopup.open();
+});
+
 //Validation
 
-const addFormValidator = new FormValidator(
-  formValidationConfig,
-  selectors.addCardForm
-);
+const addFormValidator = new FormValidator(formValidationConfig, newCardForm);
 addFormValidator.enableValidation();
 
 const editFormValidator = new FormValidator(
   formValidationConfig,
-  selectors.profileEditForm
+  editProfileForm
 );
 editFormValidator.enableValidation();
