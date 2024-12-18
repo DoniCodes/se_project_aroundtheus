@@ -18,7 +18,7 @@ import UserInfo from "../components/UserInfo.js";
 
 const userInfo = new UserInfo({
   userNameSelector: "#profile-title",
-  userDescriptionSelector: "#profile-description",
+  userDescriptionSelector: ".profile__description",
 });
 
 const popupWithImage = new PopupWithImage({
@@ -39,7 +39,7 @@ const newCardPopUp = new PopupWithForm({
   handleFormSubmit: (cardData) => {
     const card = new Card(
       {
-        data: cardData,
+        data: { name: cardData.title, link: cardData.url },
         handleImageClick: () => {
           popupWithImage.open(cardData);
         },
