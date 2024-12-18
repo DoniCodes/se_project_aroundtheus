@@ -86,4 +86,4 @@ class FormValidator {
 }
 
 export default FormValidator;
-export * from "../components/FormValidator.js";
+export * from "./FormValidator.js";
