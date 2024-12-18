@@ -17,8 +17,8 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 
 const userInfo = new UserInfo({
-  userName: ".profile__title",
-  userDescription: ".profile__description",
+  userNameSelector: "#profile-title",
+  userDescriptionSelector: "#profile-description",
 });
 
 const popupWithImage = new PopupWithImage({
@@ -28,16 +28,11 @@ const popupWithImage = new PopupWithImage({
 const userInfoPopup = new PopupWithForm({
   popupSelector: selectors.editProfileModal,
   handleFormSubmit: (data) => {
-    userInfo.setUserInfo({
-      name: data.name,
-      description: data.description,
-    });
+    userInfo.setUserInfo({ name: data.title, description: data.description });
     editProfileForm.reset();
     userInfoPopup.close();
   },
 });
-
-newCardForm.reset();
 
 const newCardPopUp = new PopupWithForm({
   popupSelector: selectors.newCardModal,
@@ -74,6 +69,7 @@ const cardSection = new Section(
   },
   selectors.cardList
 );
+
 userInfoPopup.setEventListeners();
 newCardPopUp.setEventListeners();
 popupWithImage.setEventListeners();
