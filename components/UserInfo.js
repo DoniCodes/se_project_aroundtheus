@@ -6,10 +6,8 @@ class UserInfo {
 
   getUserInfo() {
     return {
-      name: this._userName ? this._userName.textContent : "",
-      description: this._userDescription
-        ? this._userDescription.textContent
-        : "",
+      name: this._userName.textContent,
+      description: this._userDescription.textContent,
     };
   }
 
