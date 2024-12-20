@@ -31,7 +31,6 @@ const userInfoPopup = new PopupWithForm({
   popupSelector: selectors.editProfileModal,
   handleFormSubmit: (data) => {
     userInfo.setUserInfo({ name: data.title, description: data.description });
-    editProfileForm.reset();
     userInfoPopup.close();
   },
 });
@@ -39,16 +38,9 @@ const userInfoPopup = new PopupWithForm({
 const newCardPopUp = new PopupWithForm({
   popupSelector: selectors.newCardModal,
   handleFormSubmit: (cardData) => {
-    const card = new Card(
-      {
-        data: { name: cardData.title, link: cardData.url },
-        handleImageClick: () => {
-          popupWithImage.open(cardData);
-        },
-      },
-      selectors.cardTemplate
-    );
-    cardSection.addItem(card.generateCard());
+    const card = createCard({ name: cardData.title, link: cardData.url });
+    selectors.cardTemplate;
+    cardSection.addItem(card);
     newCardPopUp.close();
     addFormValidator.disableButton();
   },
@@ -57,20 +49,25 @@ const newCardPopUp = new PopupWithForm({
 const cardSection = new Section(
   {
     renderer: (cardData) => {
-      const cardElement = new Card(
-        {
-          data: cardData,
-          handleImageClick: () => {
-            popupWithImage.open(cardData);
-          },
-        },
-        selectors.cardTemplate
-      ); // Add the card to the DOM
-      cardSection.addItem(cardElement.generateCard());
+      const card = createCard(cardData);
+      cardSection.addItem(card);
     },
   },
   selectors.cardList
 );
+
+const createCard = (cardData) => {
+  const card = new Card(
+    {
+      data: cardData,
+      handleImageClick: () => {
+        popupWithImage.open(cardData);
+      },
+    },
+    selectors.cardTemplate
+  );
+  return card.generateCard();
+};
 
 userInfoPopup.setEventListeners();
 newCardPopUp.setEventListeners();
