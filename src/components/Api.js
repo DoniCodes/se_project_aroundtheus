@@ -1,60 +1,58 @@
-/* fetch("https://around-api.en.tripleten-services.com/v1/cards", {
-  headers: {
-    authorization: "d4997095-81bc-45a1-b79a-a4bada00470e",
-  },
-})
-  .then((res) => res.json())
-  .then((result) => {
-    console.log(result);
-  }); */
-
 class Api {
   constructor(options) {
     this._baseUrl = options.baseUrl;
     this._headers = options.headers;
   }
+
+  //Check if the response from server is successful
+  _checkResponse(res) {
+    if (!res.ok) {
+      Promise.reject(`Error ${res.status}`);
+    }
+    return res.json();
+  }
   //GET request to the server to get the cards
-  getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
+  async getInitialCards() {
+    const res = await fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        //if the server returns an error reject the promise
-        return Promise.reject(`Error: ${res.status}`);
-      })
-      .catch((error) => console.error("Error:", error));
+    });
+    return this._checkResponse(res);
+  }
+
+  //POST request to the server to add a new card
+  addCard({ name, link }) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify({
+        name,
+        link,
+      }),
+    }).then(this._checkResponse);
   }
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
-      method: "GET",
-      headers: {
-        name: "Placeholder name",
-        about: "Placeholder description",
-        avatar:
-          "https://practicum-content.s3.amazonaws.com/resources/avatar_placeholder_1704989734.svg",
-        _id: "d8d70f3cb03e440723aea056",
-      },
+      headers: this._headers,
+    }).then(this._checkResponse);
+  }
+
+  //PATCH request to the server to update the user info
+  updateUserInfo({ name, about }) {
+    console.log("Name:", name, "About:", about);
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        name,
+        about: about,
+      }),
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Error: ${res.status}`);
-      })
+      .then(this._checkResponse)
       .catch((err) => {
-        console.error(err);
+        console.error("Error updating user info:", err);
       });
   }
 }
 
-const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers: {
-    authorization: "d4997095-81bc-45a1-b79a-a4bada00470e",
-    "Content-Type": "application/json",
-  },
-});
+export default Api;
