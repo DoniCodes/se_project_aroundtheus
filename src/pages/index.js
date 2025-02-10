@@ -39,6 +39,11 @@ const newCardPopUp = new PopupWithForm({
   handleFormSubmit: handleAddCardFormSubmit,
 });
 
+const confirmPopup = new PopupWithForm({
+  popupSelector: selectors.deleteCardPopup,
+  handleFormSubmit: handleDeleteCard,
+});
+
 const cardSection = new Section(
   {
     renderer: (cardData) => {
@@ -141,8 +146,15 @@ function createCard(cardData) {
     handleDeleteCard,
     handleCardLike
   );
+  const deleteCardbtn = document.querySelector(".card__delete-button");
+
+  if (deleteCardbtn) {
+    deleteCardbtn.addEventListener("click", () => confirmPopup.open());
+  }
   return card.generateCard();
 }
+
+/* Event Listeners */
 
 addCardbtn.addEventListener("click", () => newCardPopUp.open());
 

@@ -38,6 +38,7 @@ export const selectors = {
   profileEditForm: "#profile-edit-form",
   newCardModal: "#profile-add-card-modal",
   editProfileModal: "#profile-edit-modal",
+  deleteCardPopup: "#delete-card-modal",
 };
 
 export const profileTitleInput = document.querySelector("#profile-title-input");
