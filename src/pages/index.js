@@ -36,19 +36,8 @@ const userInfoPopup = new PopupWithForm({
 
 const newCardPopUp = new PopupWithForm({
   popupSelector: selectors.newCardModal,
-  handleFormSubmit: (cardData) => {
-    const card = createCard({ name: cardData.title, link: cardData.url });
-    selectors.cardTemplate;
-    cardSection.addItem(card);
-    newCardPopUp.close();
-    addFormValidator.disableButton();
-  },
+  handleFormSubmit: handleAddCardFormSubmit,
 });
-
-/* const newCardPopUp = new PopupWithForm({
-  popupSelector: selectors.newCardModal,
-  handleAddCardFormSubmit,
-}); */
 
 const cardSection = new Section(
   {
@@ -59,26 +48,6 @@ const cardSection = new Section(
   },
   selectors.cardList
 );
-
-const createCard = (cardData) => {
-  const card = new Card(
-    {
-      data: cardData,
-      handleImageClick: () => {
-        popupWithImage.open(cardData);
-      },
-    },
-    selectors.cardTemplate
-  );
-  return card.generateCard();
-};
-
-/* const cardSection = new Section(
-  {
-    renderer: renderCard,
-  },
-  selectors.cardList
-); */
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
@@ -95,37 +64,28 @@ api
   })
   .catch((err) => console.error(err));
 
-/* api
+api
   .getInitialCards()
   .then((cards) => {
     cardSection.renderItems(cards);
   })
   .catch((err) => {
     console.error("Error fetching initial cards:", err);
-  }); */
+  });
 
 userInfoPopup.setEventListeners();
 newCardPopUp.setEventListeners();
 popupWithImage.setEventListeners();
-cardSection.renderItems(initialCards);
 
 /* Functions */
 
-/* function renderCard(item) {
-  const cardElement = getCardElement(item);
-  cardSection.addItem(cardElement);
-} */
+function handleImageClick(cardData) {
+  popupWithImage.open(cardData);
+}
 
-/* function getCardElement(cardData) {
-  const card = new Card(
-    cardData,
-    cardSelector,
-    handleImageClick,
-    handleDeleteCard,
-    handleCardLike
-  );
-  return card.generateCard();
-} */
+function handleDeleteCard(card) {}
+
+function handleCardLike(card) {}
 
 function handleProfileEditSubmit(inputValue) {
   userInfoPopup.setIsSaving(true);
@@ -150,7 +110,7 @@ function handleProfileEditSubmit(inputValue) {
     });
 }
 
-/* function handleAddCardFormSubmit(inputValue) {
+function handleAddCardFormSubmit(inputValue) {
   newCardPopUp.setIsSaving(true);
   const cardData = {
     name: inputValue.title,
@@ -159,9 +119,10 @@ function handleProfileEditSubmit(inputValue) {
   api
     .addCard(cardData)
     .then((newCard) => {
-      renderCard(newCard);
+      const cardElement = createCard(newCard);
+      cardSection.addItem(cardElement);
       newCardPopUp.close();
-      addCardForm.reset();
+      newCardForm.reset();
       addFormValidator.disableButton();
     })
     .catch((err) => {
@@ -170,7 +131,19 @@ function handleProfileEditSubmit(inputValue) {
     .finally(() => {
       newCardPopUp.setIsSaving(false);
     });
-} */
+}
+
+function createCard(cardData) {
+  const card = new Card(
+    cardData,
+    selectors.cardTemplate,
+    handleImageClick,
+    handleDeleteCard,
+    handleCardLike
+  );
+  return card.generateCard();
+}
+
 addCardbtn.addEventListener("click", () => newCardPopUp.open());
 
 editProfilebtn.addEventListener("click", () => {
