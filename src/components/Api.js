@@ -31,6 +31,17 @@ class Api {
     }).then(this._checkResponse);
   }
 
+  deleteCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._headers,
+    })
+      .then(this._checkResponse)
+      .catch((err) => {
+        console.error("Error deleting card:", err);
+      });
+  }
+
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
