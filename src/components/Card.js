@@ -59,8 +59,10 @@ class Card {
     });
   }
 
-  _handleLikeIcon(evt) {
-    evt.target.classList.toggle("card__like-button_active", this._isLiked);
+  _handleLikeIcon() {
+    this._element
+      .querySelector(".card__like-button")
+      .classList.add("card__like-button_active");
   }
 
   setIsLiked(isLiked) {
@@ -69,7 +71,13 @@ class Card {
   }
 
   renderLike() {
-    this._handleLikeIcon(this);
+    this._element
+      .querySelector(".card__like-button")
+      .classList.toggle("card__like-button_active", this._isLiked);
+  }
+
+  getIsLiked() {
+    return this._isLiked;
   }
 
   _handleDeleteCard() {
