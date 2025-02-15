@@ -124,7 +124,29 @@ function handleDeleteCard(card) {
   confirmPopup.open();
 }
 
-function handleCardLike(card) {}
+function handleCardLike(card) {
+  if (card.getIsLiked()) {
+    api
+      .unlikeCard(card._id)
+      .then(() => {
+        card.setIsLiked(false);
+        card.renderLike();
+      })
+      .catch((err) => {
+        console.error("Error unliking card:", err);
+      });
+  } else {
+    api
+      .likeCard(card._id)
+      .then(() => {
+        card.setIsLiked(true);
+        card.renderLike();
+      })
+      .catch((err) => {
+        console.error("Error liking card:", err);
+      });
+  }
+}
 
 function handleProfileEditSubmit(inputValue) {
   userInfoPopup.setIsSaving(true);
