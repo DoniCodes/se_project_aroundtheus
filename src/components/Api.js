@@ -1,3 +1,5 @@
+import { data } from "autoprefixer";
+
 class Api {
   constructor(options) {
     this._baseUrl = options.baseUrl;
@@ -28,7 +30,11 @@ class Api {
         name,
         link,
       }),
-    }).then(this._checkResponse);
+    })
+      .then(this._checkResponse)
+      .then((data) => {
+        return data;
+      });
   }
 
   deleteCard(cardId) {
@@ -36,6 +42,38 @@ class Api {
       method: "DELETE",
       headers: this._headers,
     }).then(this._checkResponse);
+  }
+
+  getCardLikes(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      headers: this._headers,
+    })
+      .then(this._checkResponse)
+      .then((data) => {
+        return data.likes;
+      });
+  }
+
+  likeCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "PUT",
+      headers: this._headers,
+    })
+      .then(this._checkResponse)
+      .then((data) => {
+        return data.likes;
+      });
+  }
+
+  unlikeCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "DELETE",
+      headers: this._headers,
+    })
+      .then(this._checkResponse)
+      .then((data) => {
+        return data.likes;
+      });
   }
 
   getUserInfo() {
