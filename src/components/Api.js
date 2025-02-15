@@ -84,7 +84,6 @@ class Api {
 
   //PATCH request to the server to update the user info
   updateUserInfo({ name, about }) {
-    console.log("Name:", name, "About:", about);
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
@@ -97,6 +96,14 @@ class Api {
       .catch((err) => {
         console.error("Error updating user info:", err);
       });
+  }
+
+  updateProfilePicture({ avatar }) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({ avatar }),
+    }).then(this._checkResponse);
   }
 }
 

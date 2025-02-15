@@ -36,6 +36,10 @@
   width: 100%;
 }
 
+.modal__container_profile-image {
+  height: 272px;
+}
+
 .modal__close {
   position: absolute;
   bottom: calc(100% + 5px);

@@ -6,6 +6,8 @@ import {
   addCardbtn,
   newCardForm,
   editProfileForm,
+  profileImageForm,
+  profileImage,
   profileTitleInput,
   profileDescriptionInput,
   formValidationConfig,
@@ -32,6 +34,11 @@ const popupWithImage = new PopupWithImage({
 const userInfoPopup = new PopupWithForm({
   popupSelector: selectors.editProfileModal,
   handleFormSubmit: handleProfileEditSubmit,
+});
+
+const profileImagePopup = new PopupWithForm({
+  popupSelector: selectors.profileImagePopup,
+  handleFormSubmit: handleProfileImageSubmit,
 });
 
 const newCardPopUp = new PopupWithForm({
@@ -64,7 +71,12 @@ const api = new Api({
 api
   .getUserInfo()
   .then((userData) => {
-    userInfo.setUserInfo(userData);
+    userInfo.setUserInfo({
+      name: userData.name,
+      about: userData.about,
+      avatar: userData.avatar,
+    });
+    userInfo.setUserInfo(userData.avatar);
   })
   .catch((err) => console.error(err));
 
@@ -81,6 +93,7 @@ userInfoPopup.setEventListeners();
 newCardPopUp.setEventListeners();
 popupWithImage.setEventListeners();
 confirmPopup.setEventListeners();
+profileImagePopup.setEventListeners();
 
 /* Functions */
 
@@ -171,6 +184,27 @@ function handleProfileEditSubmit(inputValue) {
     });
 }
 
+function handleProfileImageSubmit(inputValue) {
+  const imageData = {
+    avatar: inputValue.avatar,
+  };
+  profileImagePopup.setIsSaving(true);
+  api
+    .updateProfilePicture(imageData)
+    .then(() => {
+      userInfo.setUserInfo(imageData);
+      profileImagePopup.close();
+      profileImageFormValidator.disableButton();
+      profileImageForm.reset();
+    })
+    .catch((err) => {
+      console.error("Error updating profile picture:", err);
+    })
+    .finally(() => {
+      profileImagePopup.setIsSaving(false);
+    });
+}
+
 function handleAddCardFormSubmit(inputValue) {
   newCardPopUp.setIsSaving(true);
   const cardData = {
@@ -205,6 +239,10 @@ editProfilebtn.addEventListener("click", () => {
   userInfoPopup.open();
 });
 
+profileImage.addEventListener("click", () => {
+  profileImagePopup.open();
+});
+
 //Validation
 
 const addFormValidator = new FormValidator(formValidationConfig, newCardForm);
@@ -215,3 +253,9 @@ const editFormValidator = new FormValidator(
   editProfileForm
 );
 editFormValidator.enableValidation();
+
+const profileImageFormValidator = new FormValidator(
+  formValidationConfig,
+  profileImageForm
+);
+profileImageFormValidator.enableValidation();

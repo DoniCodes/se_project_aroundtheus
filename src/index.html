@@ -102,6 +102,45 @@
       </div>
     </div>
 
+    <!--Edit Image Modal-->
+    <div class="modal" id="image-edit-modal">
+      <div class="modal__container modal__container_profile-image">
+        <button type="button" class="modal__close"></button>
+        <p class="modal__heading">Change profile picture</p>
+        <form
+          name="image-form"
+          id="profile-image-edit-form"
+          class="modal__form"
+          novalidate
+        >
+          <label class="modal__label">
+            <input
+              type="url"
+              class="modal__input"
+              id="profile-image-url-input"
+              name="avatar"
+              placeholder="Link for profile image"
+              minlength="2"
+              maxlength="400"
+              required
+            />
+            <span
+              class="modal__error"
+              id="profile-image-url-input-error"
+            ></span>
+          </label>
+          <button
+            type="submit"
+            class="modal__save-btn modal__save-btn_disabled"
+            id="profile-image-save-btn"
+            disabled
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
     <!--Add Modal-->
     <div class="modal" id="profile-add-card-modal">
       <div class="modal__container">
