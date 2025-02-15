@@ -76,6 +76,10 @@ class Card {
       .classList.toggle("card__like-button_active", this._isLiked);
   }
 
+  getId() {
+    return this._id;
+  }
+
   getIsLiked() {
     return this._isLiked;
   }

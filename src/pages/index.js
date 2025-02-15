@@ -121,7 +121,7 @@ function handleDeleteCard(card) {
   confirmPopup.setSubmitFunction(() => {
     confirmPopup.setIsDeleting(true);
     api
-      .deleteCard(card._id)
+      .deleteCard(card.getId())
       .then(() => {
         card._element.remove();
         confirmPopup.setIsDeleting(false);
@@ -140,7 +140,7 @@ function handleDeleteCard(card) {
 function handleCardLike(card) {
   if (card.getIsLiked()) {
     api
-      .unlikeCard(card._id)
+      .unlikeCard(card.getId())
       .then(() => {
         card.setIsLiked(false);
         card.renderLike();
@@ -150,7 +150,7 @@ function handleCardLike(card) {
       });
   } else {
     api
-      .likeCard(card._id)
+      .likeCard(card.getId())
       .then(() => {
         card.setIsLiked(true);
         card.renderLike();

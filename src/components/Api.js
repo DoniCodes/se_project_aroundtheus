@@ -91,11 +91,7 @@ class Api {
         name,
         about: about,
       }),
-    })
-      .then(this._checkResponse)
-      .catch((err) => {
-        console.error("Error updating user info:", err);
-      });
+    }).then(this._checkResponse);
   }
 
   updateProfilePicture({ avatar }) {
