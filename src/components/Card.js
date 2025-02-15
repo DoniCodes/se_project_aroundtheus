@@ -55,7 +55,7 @@ class Card {
       this._handleCardLike(this);
     });
     deleteBtn.addEventListener("click", () => {
-      this._handleDeleteCard(this._id, this._element);
+      this._handleDeleteCard(this);
     });
   }
 
@@ -72,12 +72,9 @@ class Card {
     this._handleLikeIcon(this);
   }
 
-  delete() {
-    this._handleDeleteCard(this._id, this._element);
-  }
-
-  _handleDeleteCard(evt) {
-    evt.target.closest(".card").remove();
+  _handleDeleteCard() {
+    this._element.remove();
+    this._element = null;
   }
 }
 

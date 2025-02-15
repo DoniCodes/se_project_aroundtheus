@@ -1,7 +1,6 @@
 import "../pages/index.css";
 
 import {
-  initialCards,
   selectors,
   editProfilebtn,
   addCardbtn,
@@ -17,6 +16,7 @@ import Api from "../components/Api.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import ConfirmPopup from "../components/ConfirmPopup.js";
 import UserInfo from "../components/UserInfo.js";
 
 const userInfo = new UserInfo({
@@ -39,9 +39,8 @@ const newCardPopUp = new PopupWithForm({
   handleFormSubmit: handleAddCardFormSubmit,
 });
 
-const confirmPopup = new PopupWithForm({
+const confirmPopup = new ConfirmPopup({
   popupSelector: selectors.deleteCardPopup,
-  handleFormSubmit: handleDeleteCard,
 });
 
 const cardSection = new Section(
@@ -81,14 +80,49 @@ api
 userInfoPopup.setEventListeners();
 newCardPopUp.setEventListeners();
 popupWithImage.setEventListeners();
+confirmPopup.setEventListeners();
 
 /* Functions */
+
+function createCard(cardData) {
+  const card = new Card(
+    cardData,
+    selectors.cardTemplate,
+    handleImageClick,
+    handleDeleteCard,
+    handleCardLike
+  );
+  const deleteCardbtn = document.querySelector(".card__delete-button");
+
+  if (deleteCardbtn) {
+    deleteCardbtn.addEventListener("click", () => confirmPopup.open());
+  }
+  return card.generateCard();
+}
 
 function handleImageClick(cardData) {
   popupWithImage.open(cardData);
 }
 
-function handleDeleteCard(card) {}
+function handleDeleteCard(card) {
+  confirmPopup.setSubmitFunction(() => {
+    confirmPopup.setIsDeleting(true);
+    api
+      .deleteCard(card._id)
+      .then(() => {
+        card._element.remove();
+        confirmPopup.setIsDeleting(false);
+      })
+      .catch((err) => {
+        console.error("Error deleting card:", err);
+      })
+      .finally(() => {
+        confirmPopup.close();
+      });
+  });
+
+  confirmPopup.open();
+}
 
 function handleCardLike(card) {}
 
@@ -136,22 +170,6 @@ function handleAddCardFormSubmit(inputValue) {
     .finally(() => {
       newCardPopUp.setIsSaving(false);
     });
-}
-
-function createCard(cardData) {
-  const card = new Card(
-    cardData,
-    selectors.cardTemplate,
-    handleImageClick,
-    handleDeleteCard,
-    handleCardLike
-  );
-  const deleteCardbtn = document.querySelector(".card__delete-button");
-
-  if (deleteCardbtn) {
-    deleteCardbtn.addEventListener("click", () => confirmPopup.open());
-  }
-  return card.generateCard();
 }
 
 /* Event Listeners */
