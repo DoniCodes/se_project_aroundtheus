@@ -76,7 +76,6 @@ api
       about: userData.about,
       avatar: userData.avatar,
     });
-    userInfo.setUserInfo(userData.avatar);
   })
   .catch((err) => console.error(err));
 
@@ -105,11 +104,6 @@ function createCard(cardData) {
     handleDeleteCard,
     handleCardLike
   );
-  const deleteCardbtn = document.querySelector(".card__delete-button");
-
-  if (deleteCardbtn) {
-    deleteCardbtn.addEventListener("click", () => confirmPopup.open());
-  }
   return card.generateCard();
 }
 
@@ -123,7 +117,7 @@ function handleDeleteCard(card) {
     api
       .deleteCard(card.getId())
       .then(() => {
-        card._element.remove();
+        card.getElement().remove();
         confirmPopup.setIsDeleting(false);
       })
       .catch((err) => {

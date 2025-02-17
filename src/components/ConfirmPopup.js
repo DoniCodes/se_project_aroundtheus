@@ -32,14 +32,6 @@ class ConfirmPopup extends Popup {
       this._submitButton.textContent = this._submitbuttonTextContent;
     }
   }
-
-  open() {
-    super.open();
-  }
-
-  close() {
-    super.close();
-  }
 }
 
 export default ConfirmPopup;
