@@ -118,11 +118,17 @@
   .profile__title {
     font-size: 31px;
   }
+  .profile__image_edit-button {
+    right: 90.5%;
+  }
 }
 
 @media screen and (max-width: 630px) {
   .profile__add-button {
     width: 50px;
+  }
+  .profile__image_edit-button {
+    right: 88.5%;
   }
 }
 
@@ -140,6 +146,10 @@
   .profile__description {
     font-size: 14px;
     line-height: 1.2;
+  }
+
+  .profile__image_edit-button {
+    right: 87.5%;
   }
 }
 
@@ -172,5 +182,10 @@
     margin: 0;
     width: 18px;
     height: 18px;
+  }
+
+  .profile__image_edit-button {
+    right: 45.5%;
+    bottom: 65%;
   }
 }

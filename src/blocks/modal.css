@@ -193,9 +193,16 @@
     max-width: 282px;
     max-height: 322px;
   }
+
   .modal__heading {
     max-width: 238px;
     margin: 0 auto 75px;
+    font-size: 18px;
+  }
+
+  .modal__heading_delete {
+    max-width: 238px;
+    margin: 0 auto 0;
     font-size: 18px;
   }
 
@@ -212,6 +219,13 @@
     max-width: 238px;
     height: 46px;
     margin: 45px auto 0;
+    font-size: 14px;
+  }
+
+  .modal__save-btn_delete {
+    max-width: 238px;
+    height: 46px;
+    margin: 30px auto 0;
     font-size: 14px;
   }
 
