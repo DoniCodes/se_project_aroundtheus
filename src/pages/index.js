@@ -118,13 +118,13 @@ function handleDeleteCard(card) {
       .deleteCard(card.getId())
       .then(() => {
         card.getElement().remove();
-        confirmPopup.setIsDeleting(false);
+        confirmPopup.close();
       })
       .catch((err) => {
         console.error("Error deleting card:", err);
       })
       .finally(() => {
-        confirmPopup.close();
+        confirmPopup.setIsDeleting(false);
       });
   });
 
