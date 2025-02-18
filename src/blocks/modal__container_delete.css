@@ -1,0 +1,12 @@
+.modal__container_delete {
+  padding: 0;
+  display: flex;
+  height: 181px;
+}
+
+@media screen and (max-width: 480px) {
+  .modal__container_delete {
+    max-width: 282px;
+    max-height: 322px;
+  }
+}

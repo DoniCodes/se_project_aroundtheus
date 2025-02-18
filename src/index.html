@@ -27,6 +27,11 @@
             alt="picture of profile"
             class="profile__image"
           />
+          <button
+            type="button"
+            class="profile__image_edit-button"
+            id="profile-image-edit-button"
+          ></button>
           <div class="profile__info">
             <h1 id="profile-title" class="profile__title">Jacques Cousteau</h1>
             <button
@@ -97,6 +102,45 @@
       </div>
     </div>
 
+    <!--Edit Image Modal-->
+    <div class="modal" id="image-edit-modal">
+      <div class="modal__container modal__container_profile-image">
+        <button type="button" class="modal__close"></button>
+        <p class="modal__heading">Change profile picture</p>
+        <form
+          name="image-form"
+          id="profile-image-edit-form"
+          class="modal__form"
+          novalidate
+        >
+          <label class="modal__label">
+            <input
+              type="url"
+              class="modal__input"
+              id="profile-image-url-input"
+              name="avatar"
+              placeholder="Link for profile image"
+              minlength="2"
+              maxlength="400"
+              required
+            />
+            <span
+              class="modal__error"
+              id="profile-image-url-input-error"
+            ></span>
+          </label>
+          <button
+            type="submit"
+            class="modal__save-btn modal__save-btn_disabled"
+            id="profile-image-save-btn"
+            disabled
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
     <!--Add Modal-->
     <div class="modal" id="profile-add-card-modal">
       <div class="modal__container">
@@ -153,11 +197,30 @@
       </div>
     </div>
 
+    <!--Delete Modal-->
+    <div class="modal" id="delete-card-modal">
+      <div class="modal__container modal__container_delete">
+        <button type="button" class="modal__close"></button>
+        <h3 class="modal__heading modal__heading_delete">Are you sure?</h3>
+        <button
+          type="submit"
+          id="confirm-delete-btn"
+          class="modal__save-btn modal__save-btn_delete"
+        >
+          Yes
+        </button>
+      </div>
+    </div>
+
     <!--Card Template-->
     <template id="card-template">
       <li class="card">
         <img src="" alt="" class="card__image" />
-        <button type="button" class="card__delete-button"></button>
+        <button
+          type="button"
+          class="card__delete-button"
+          id="card-delete-button"
+        ></button>
         <div class="card__description">
           <h2 class="card__title"></h2>
           <button type="button" class="card__like-button"></button>
